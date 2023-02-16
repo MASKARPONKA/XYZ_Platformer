@@ -1,28 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInput : MonoBehaviour
 {
-    private Hero _hero;
-    private void Awake()
+    [SerializeField] private Hero _hero;
+    public void OnMove(InputAction.CallbackContext context)
     {
-        _hero = GetComponent<Hero>();
+        var dirVector = context.ReadValue<Vector2>();
+        _hero.SetDirection(dirVector);
     }
-    private void Update()
+    public void OnSayYohoho(InputAction.CallbackContext context)
     {
-
-        if (Input.GetKey(KeyCode.A))
+        if (context.canceled)
         {
-            _hero.SetDirection(-1);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            _hero.SetDirection(1);
-        }
-        else
-        {
-            _hero.SetDirection(0);
-        }
+            _hero.SayYohoho();
+        }    
+        
     }
 }

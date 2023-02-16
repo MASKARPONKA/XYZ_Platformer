@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
-    private float _direction;
+    private Vector3 _direction;
     [SerializeField] float _speed;
-   public void SetDirection(float direction)
+   public void SetDirection(Vector2 directionVector)
     {
-        _direction = direction;
+        _direction = directionVector;
+    }
+    public void SayYohoho()
+    {
+        Debug.Log("Yohoho!");
     }
     private void Update()
     {
-        if (_direction != 0)
+        if (_direction != Vector3.zero)
         {
             var delta = _direction * _speed * Time.deltaTime;
-            var NewXPosition = transform.position.x + delta;
-            transform.position = new Vector3(NewXPosition, transform.position.y, transform.position.z);
+            transform.position += delta;
         }
     }
 }
