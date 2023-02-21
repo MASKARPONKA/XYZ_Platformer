@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Obstacle
+  - Collectable
+  - Background
   layers:
   - Default
   - TransparentFX
@@ -38,6 +41,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 4222102283
+    locked: 0
+  - name: Tilemap
+    uniqueID: 1128456219
+    locked: 0
+  - name: Other
+    uniqueID: 2766982037
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
