@@ -5,8 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obstacle
-  - Collectable
   - Background
+  - GoldCoin
+  - SilverCoin
   layers:
   - Default
   - TransparentFX

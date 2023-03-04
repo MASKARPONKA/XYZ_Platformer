@@ -1,22 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInput : MonoBehaviour
+namespace PixelCrew
 {
-    [SerializeField] private Hero _hero;
-    public void OnMove(InputAction.CallbackContext context)
+    public class PlayerInput : MonoBehaviour
     {
-        var dirVector = context.ReadValue<Vector2>();
-        _hero.SetDirection(dirVector);
-    }
-    public void OnSayYohoho(InputAction.CallbackContext context)
-    {
-        if (context.canceled)
+        [SerializeField] private Hero _hero;
+        public void OnMove(InputAction.CallbackContext context)
         {
-            _hero.SayYohoho();
-        }    
-        
+            var dirVector = context.ReadValue<Vector2>();
+            _hero.SetDirection(dirVector);
+        }
+        public void OnSayYohoho(InputAction.CallbackContext context)
+        {
+            if (context.canceled)
+            {
+                _hero.SayYohoho();
+            }
+
+        }
     }
 }
