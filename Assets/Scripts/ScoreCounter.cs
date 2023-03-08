@@ -13,6 +13,10 @@ namespace PixelCrew
         public void ScoreAlter(float value)
         {
             Score += value;
+            if (Score <= 0)
+            {
+                Score = 0;
+            }
             Debug.Log("Your score:" + Score);
         }
     }

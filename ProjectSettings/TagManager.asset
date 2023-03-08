@@ -18,7 +18,7 @@ TagManager:
   - 
   - 
   - Ground
-  - 
+  - Decoration
   - 
   - 
   - 
@@ -42,7 +42,7 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
+  - name: Decoration
     uniqueID: 4222102283
     locked: 0
   - name: Tilemap
@@ -53,4 +53,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 4001234837
     locked: 0
