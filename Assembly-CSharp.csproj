@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Components\EnterInTrigger.cs" />
     <Compile Include="Assets\Scripts\Components\FollowTarget.cs" />
     <Compile Include="Assets\Scripts\Components\ResetLevelComponent.cs" />
+    <Compile Include="Assets\Scripts\Components\SpriteAnimation.cs" />
     <Compile Include="Assets\Scripts\Hero.cs" />
     <Compile Include="Assets\Scripts\LayerCheck.cs" />
     <Compile Include="Assets\Scripts\PlayerInput.cs" />
