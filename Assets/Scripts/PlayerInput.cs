@@ -17,7 +17,13 @@ namespace PixelCrew
             {
                 _hero.SayYohoho();
             }
-
+        }
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            if (context.canceled)
+            {
+                _hero.Interact();
+            }
         }
     }
 }
