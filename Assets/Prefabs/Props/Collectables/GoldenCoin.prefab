@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6942128541828780915}
   - component: {fileID: 6942128541828780912}
   - component: {fileID: 6942128541828780925}
+  - component: {fileID: -2110984151651579339}
   m_Layer: 0
   m_Name: GoldenCoin
   m_TagString: GoldCoin
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1527985259
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 6582046967323461550, guid: 3b066b48734fbe34bad7cd84353ad088,
     type: 3}
@@ -118,8 +119,19 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6942128541828780912}
-        m_MethodName: DestroyObject
+      - m_Target: {fileID: 6942128541828780925}
+        m_MethodName: SetClip
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Destroy
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -2110984151651579339}
+        m_MethodName: Alter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -129,14 +141,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: ScoreAlter
-        m_Mode: 4
+      - m_Target: {fileID: 6942128541828780914}
+        m_MethodName: set_enabled
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 10
+          m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -166,12 +178,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _frameRate: 6
-  _loop: 1
-  _sprites:
-  - {fileID: 6582046967323461550, guid: 3b066b48734fbe34bad7cd84353ad088, type: 3}
-  - {fileID: 1942777921290549423, guid: 3b066b48734fbe34bad7cd84353ad088, type: 3}
-  - {fileID: 8793606821965667882, guid: 3b066b48734fbe34bad7cd84353ad088, type: 3}
-  - {fileID: 3444832735345940322, guid: 3b066b48734fbe34bad7cd84353ad088, type: 3}
-  _onComplete:
-    m_PersistentCalls:
-      m_Calls: []
+  _clips:
+  - _name: Idle
+    _sprites:
+    - {fileID: 6582046967323461550, guid: 3b066b48734fbe34bad7cd84353ad088, type: 3}
+    - {fileID: 1942777921290549423, guid: 3b066b48734fbe34bad7cd84353ad088, type: 3}
+    - {fileID: 8793606821965667882, guid: 3b066b48734fbe34bad7cd84353ad088, type: 3}
+    - {fileID: 3444832735345940322, guid: 3b066b48734fbe34bad7cd84353ad088, type: 3}
+    _loop: 1
+    _allowNextClip: 0
+    _onComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  - _name: Destroy
+    _sprites:
+    - {fileID: -4986890610287934012, guid: 3b066b48734fbe34bad7cd84353ad088, type: 3}
+    - {fileID: 6143208460787649835, guid: 3b066b48734fbe34bad7cd84353ad088, type: 3}
+    - {fileID: 7609282858266732271, guid: 3b066b48734fbe34bad7cd84353ad088, type: 3}
+    - {fileID: -6288512792030432889, guid: 3b066b48734fbe34bad7cd84353ad088, type: 3}
+    _loop: 0
+    _allowNextClip: 0
+    _onComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6942128541828780912}
+          m_MethodName: DestroyObject
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &-2110984151651579339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6942128541828780919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d13e56730b6a3da4a96924e6578daad5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coins: 10

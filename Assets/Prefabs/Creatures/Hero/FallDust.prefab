@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3700720300239634992
+--- !u!1 &3171263004056055463
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3700720300239634997}
-  - component: {fileID: 3700720300239634994}
-  - component: {fileID: 3700720300239634995}
-  m_Layer: 9
-  m_Name: PalmTreeRight
+  - component: {fileID: 1269657883026570246}
+  - component: {fileID: 1774325089929958054}
+  - component: {fileID: 6445926884322831869}
+  - component: {fileID: 654058461177962130}
+  m_Layer: 0
+  m_Name: FallDust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3700720300239634997
+--- !u!4 &1269657883026570246
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3700720300239634992}
+  m_GameObject: {fileID: 3171263004056055463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.6727505, y: 0.17724752, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3700720300239634994
+--- !u!212 &1774325089929958054
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3700720300239634992}
+  m_GameObject: {fileID: 3171263004056055463}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -68,43 +69,67 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -72865013
-  m_SortingLayer: -2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6024505487453159095, guid: 60f5d9d1b425dc8469b5f8537f90d4f6,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: ace4bbcc90e4f6d4697e86830cf0129a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.5625, y: 1.65625}
+  m_Size: {x: 1.625, y: 0.625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3700720300239634995
+--- !u!114 &6445926884322831869
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3700720300239634992}
+  m_GameObject: {fileID: 3171263004056055463}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a876affbf0498c84ea47b9b387de12a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _frameRate: 8
+  _frameRate: 18
   _clips:
-  - _name: Idle
+  - _name: Fall
     _sprites:
-    - {fileID: -6024505487453159095, guid: 60f5d9d1b425dc8469b5f8537f90d4f6, type: 3}
-    - {fileID: 3531074664856275464, guid: 60f5d9d1b425dc8469b5f8537f90d4f6, type: 3}
-    - {fileID: 802857254159732353, guid: 60f5d9d1b425dc8469b5f8537f90d4f6, type: 3}
-    - {fileID: 1278475588773109743, guid: 60f5d9d1b425dc8469b5f8537f90d4f6, type: 3}
-    _loop: 1
+    - {fileID: 21300000, guid: ace4bbcc90e4f6d4697e86830cf0129a, type: 3}
+    - {fileID: 21300000, guid: ca129fc7e0733da4291f50f89b0f110f, type: 3}
+    - {fileID: 21300000, guid: 45ea6fcc038f67540ac2c4f64fb10a88, type: 3}
+    - {fileID: 21300000, guid: 996c553ebcb102c4191bf68f880fcc46, type: 3}
+    - {fileID: 21300000, guid: f1396c9ba48e304498fe610d135a55e5, type: 3}
+    _loop: 0
     _allowNextClip: 0
     _onComplete:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 654058461177962130}
+          m_MethodName: DestroyObject
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &654058461177962130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3171263004056055463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 788575854ce7f2946aa1c50e0b14cfe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectToDestroy: {fileID: 3171263004056055463}

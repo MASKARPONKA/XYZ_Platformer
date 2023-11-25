@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -72865013
-  m_SortingLayer: -3
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 8683632313750085214, guid: 60f5d9d1b425dc8469b5f8537f90d4f6,
     type: 3}
@@ -95,13 +95,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a876affbf0498c84ea47b9b387de12a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _frameRate: 6
-  _loop: 1
-  _sprites:
-  - {fileID: 8683632313750085214, guid: 60f5d9d1b425dc8469b5f8537f90d4f6, type: 3}
-  - {fileID: 262518517033693272, guid: 60f5d9d1b425dc8469b5f8537f90d4f6, type: 3}
-  - {fileID: 762285979657935423, guid: 60f5d9d1b425dc8469b5f8537f90d4f6, type: 3}
-  - {fileID: 1400697303485121525, guid: 60f5d9d1b425dc8469b5f8537f90d4f6, type: 3}
-  _onComplete:
-    m_PersistentCalls:
-      m_Calls: []
+  _frameRate: 8
+  _clips:
+  - _name: Idle
+    _sprites:
+    - {fileID: 8683632313750085214, guid: 60f5d9d1b425dc8469b5f8537f90d4f6, type: 3}
+    - {fileID: 262518517033693272, guid: 60f5d9d1b425dc8469b5f8537f90d4f6, type: 3}
+    - {fileID: 762285979657935423, guid: 60f5d9d1b425dc8469b5f8537f90d4f6, type: 3}
+    - {fileID: 1400697303485121525, guid: 60f5d9d1b425dc8469b5f8537f90d4f6, type: 3}
+    _loop: 1
+    _allowNextClip: 0
+    _onComplete:
+      m_PersistentCalls:
+        m_Calls: []
