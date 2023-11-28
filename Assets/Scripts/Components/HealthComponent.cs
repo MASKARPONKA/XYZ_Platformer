@@ -9,20 +9,43 @@ namespace PixelCrew.Components
         [SerializeField] private int _maxHealth;
         [SerializeField] private UnityEvent _OnDamage;
         [SerializeField] private UnityEvent _OnDie;
+        [SerializeField] private UnityEvent _OnShieldBroke;
+        [SerializeField] private bool _isProtected;
 
+        public void TakeShield()
+        {
+            _isProtected = true;
+            Debug.Log("Shield is taken!");
+        }
         public void ApplyDamage(int value)
         {
-            if(value <= 0) _OnDamage?.Invoke();
-            _health += value;
-            if (_health <= 0)
+            if (value <= 0)
             {
-                _OnDie?.Invoke();
-            }
-            else if (_health > _maxHealth)
+                if (!_isProtected)
+                {
+                    _OnDamage?.Invoke();
+                    _health += value;
+                    if (_health <= 0)
+                    {
+                        _OnDie?.Invoke();
+                    }
+                }
+                else
+                {
+                    _OnShieldBroke?.Invoke();
+                    _isProtected = false;
+                    Debug.Log("Shield is broken!");
+                }
+            } 
+            else
             {
-                _health = _maxHealth;
-            }
-            Debug.Log("Your health: " + _health);
+                _health += value;
+                if (_health > _maxHealth)
+                {
+                    _health = _maxHealth;
+                }
+                Debug.Log("Your health: " + _health);
+            }    
         }
     }
 }

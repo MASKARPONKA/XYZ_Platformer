@@ -8,6 +8,8 @@ TagManager:
   - Background
   - GoldCoin
   - SilverCoin
+  - HealthPostion
+  - Shield
   layers:
   - Default
   - TransparentFX

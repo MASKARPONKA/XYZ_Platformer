@@ -24,6 +24,7 @@ namespace PixelCrew
         [SerializeField] private SpawnComponent _spawnJumpParticles;
         [SerializeField] private SpawnComponent _spawnFallParticles;
         [SerializeField] private ParticleSystem _DamageParcticles;
+        [SerializeField] private ParticleSystem _BrokenShieldParticles;
 
         private Collider2D[] _interactionResult = new Collider2D[1];
         private static readonly int IsRunningKey = Animator.StringToHash("isRunning");
@@ -78,7 +79,9 @@ namespace PixelCrew
             {
                 _allowDoubleJump = true;
                 _isJumping = false;
+                SpawnFallDust();
             }
+            else isFalling();
             if (isJumpPressing)
             {
                 _isJumping = true;
@@ -98,11 +101,13 @@ namespace PixelCrew
             if (_isGrounded)
             {
                 yVelocity += _jumpSpeed;
+                SpawnJumpDust();
             }
             else if (_allowDoubleJump)
             {
                 yVelocity = _jumpSpeed;
                 _allowDoubleJump = false;
+                SpawnJumpDust();
             }
             return yVelocity;
         }
@@ -140,6 +145,13 @@ namespace PixelCrew
             {
                 SpawnCoins();
             }
+        }
+        public void ShieldBreak()
+        {
+            _isJumping = false;
+            _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _damageJumpSpeed);
+            _BrokenShieldParticles.gameObject.SetActive(true);
+            _BrokenShieldParticles.Play();
         }
         public void SpawnCoins()
         {
@@ -184,7 +196,6 @@ namespace PixelCrew
             {
                 _isFalling = true;
             }
-
         }
         public void SpawnFallDust()
         {

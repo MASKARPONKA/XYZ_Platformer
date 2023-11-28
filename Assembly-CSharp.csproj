@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\Components\HealthComponent.cs" />
     <Compile Include="Assets\Scripts\Components\InteractableComponent.cs" />
     <Compile Include="Assets\Scripts\Components\ResetLevelComponent.cs" />
+    <Compile Include="Assets\Scripts\Components\ShieldCheck.cs" />
     <Compile Include="Assets\Scripts\Components\SpawnComponent.cs" />
     <Compile Include="Assets\Scripts\Components\SpriteAnimation.cs" />
     <Compile Include="Assets\Scripts\Components\SwitchComponent.cs" />
