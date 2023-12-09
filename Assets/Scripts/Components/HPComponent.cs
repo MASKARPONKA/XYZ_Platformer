@@ -11,7 +11,7 @@ namespace PixelCrew.Components
             var healtComponent = target.GetComponent<HealthComponent>();
             if (healtComponent != null)
             {
-                healtComponent.ApplyDamage(_value);
+                healtComponent.ModifyHealth(_value);
             }
         }
     }

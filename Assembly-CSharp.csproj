@@ -66,6 +66,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AlterScore.cs" />
     <Compile Include="Assets\Scripts\CheatController.cs" />
+    <Compile Include="Assets\Scripts\CheckCircleOverlap.cs" />
+    <Compile Include="Assets\Scripts\Components\ArmHeroComponent.cs" />
     <Compile Include="Assets\Scripts\Components\DestroyComponent.cs" />
     <Compile Include="Assets\Scripts\Components\EnterCollisionComponent.cs" />
     <Compile Include="Assets\Scripts\Components\EnterInTrigger.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="Assets\Scripts\Components\SpriteAnimation.cs" />
     <Compile Include="Assets\Scripts\Components\SwitchComponent.cs" />
     <Compile Include="Assets\Scripts\Components\TeleportComponent.cs" />
+    <Compile Include="Assets\Scripts\HandlesUtils.cs" />
     <Compile Include="Assets\Scripts\Hero.cs" />
     <Compile Include="Assets\Scripts\LayerCheck.cs" />
     <Compile Include="Assets\Scripts\PlayerInput.cs" />

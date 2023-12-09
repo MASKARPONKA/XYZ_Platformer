@@ -17,7 +17,7 @@ namespace PixelCrew.Components
             _isProtected = true;
             Debug.Log("Shield is taken!");
         }
-        public void ApplyDamage(int value)
+        public void ModifyHealth(int value)
         {
             if (value <= 0)
             {

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using PixelCrew.Components;
+using UnityEditor;
+using UnityEditor.Animations;
 
 namespace PixelCrew
 {
@@ -12,13 +14,20 @@ namespace PixelCrew
         private bool _allowDoubleJump;
         private bool _isJumping;
         private bool _isFalling;
+        private bool _isArmed;
 
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpSpeed;
         [SerializeField] private float _damageJumpSpeed;
+        [SerializeField] private int _damage;
         [SerializeField] private float _interactionRadius;
         [SerializeField] private LayerMask _interactionLayer;
         [SerializeField] private LayerCheck _groundCheck;
+
+        [SerializeField] private AnimatorController _armed;
+        [SerializeField] private AnimatorController _disarmed;
+
+        [SerializeField] private CheckCircleOverlap _attackRange;
 
         [SerializeField] private SpawnComponent _spawnStepParticles;
         [SerializeField] private SpawnComponent _spawnJumpParticles;
@@ -31,6 +40,7 @@ namespace PixelCrew
         private static readonly int IsGroundedKey = Animator.StringToHash("isGrounded");
         private static readonly int VerticalVelocityKey = Animator.StringToHash("verticalVelocity");
         private static readonly int Hit = Animator.StringToHash("hit");
+        private static readonly int AttackKey = Animator.StringToHash("attack");
 
         private int _score;
 
@@ -126,14 +136,34 @@ namespace PixelCrew
         {
             return _groundCheck.IsTouchingLayer;
         }
+#if UNITY_EDITOR
         private void OnDrawGizmos()
         {
-            Gizmos.color = IsGrounded() ? Color.green : Color.red;
+            Handles.color = IsGrounded() ? HandlesUtils.TransparentGreen : HandlesUtils.TransparentRed;
             Gizmos.DrawSphere(transform.position, 0.3f);
         }
+#endif
         public void SayYohoho()
         {
             Debug.Log("Yohoho!");
+        }
+        public void Attack()
+        {
+            if (!_isArmed) return;
+
+            _animator.SetTrigger(AttackKey);
+        }
+        public void OnAttack()
+        {
+            var gos = _attackRange.GetObjectInRange();
+            foreach (var go in gos)
+            {
+                var hp = go.GetComponent<HealthComponent>();
+                if (hp != null && go.CompareTag("Enemy"))
+                {
+                    hp.ModifyHealth(-_damage);
+                }
+            }
         }
         public void TakeDamage()
         {
@@ -204,6 +234,11 @@ namespace PixelCrew
                 _isFalling = false;
                 _spawnFallParticles.Spawn();
             }
+        }
+        public void ArmHero()
+        {
+            _isArmed = true;
+            _animator.runtimeAnimatorController = _armed;
         }
     }
 }
