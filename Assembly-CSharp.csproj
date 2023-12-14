@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Components\DestroyComponent.cs" />
     <Compile Include="Assets\Scripts\Components\EnterCollisionComponent.cs" />
     <Compile Include="Assets\Scripts\Components\EnterInTrigger.cs" />
+    <Compile Include="Assets\Scripts\Components\ExitLevelComponent.cs" />
     <Compile Include="Assets\Scripts\Components\FollowTarget.cs" />
     <Compile Include="Assets\Scripts\Components\HPComponent.cs" />
     <Compile Include="Assets\Scripts\Components\HealthComponent.cs" />
@@ -81,9 +82,11 @@
     <Compile Include="Assets\Scripts\Components\SpriteAnimation.cs" />
     <Compile Include="Assets\Scripts\Components\SwitchComponent.cs" />
     <Compile Include="Assets\Scripts\Components\TeleportComponent.cs" />
+    <Compile Include="Assets\Scripts\GameSession.cs" />
     <Compile Include="Assets\Scripts\HandlesUtils.cs" />
     <Compile Include="Assets\Scripts\Hero.cs" />
     <Compile Include="Assets\Scripts\LayerCheck.cs" />
+    <Compile Include="Assets\Scripts\PlayerData.cs" />
     <Compile Include="Assets\Scripts\PlayerInput.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.21f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

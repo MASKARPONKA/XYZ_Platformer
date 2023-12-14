@@ -99,7 +99,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1.2
+  m_Mass: 50
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
@@ -237,8 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb90cf7ca0f207347a1caabcf2e31566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 1
-  _maxHealth: 1
+  _health: 3
+  _maxHealth: 3
   _OnDamage:
     m_PersistentCalls:
       m_Calls:

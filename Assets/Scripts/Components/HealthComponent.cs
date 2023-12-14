@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using System;
 
 namespace PixelCrew.Components
 {
@@ -10,6 +11,7 @@ namespace PixelCrew.Components
         [SerializeField] private UnityEvent _OnDamage;
         [SerializeField] private UnityEvent _OnDie;
         [SerializeField] private UnityEvent _OnShieldBroke;
+        [SerializeField] private HealthChangeEvent _OnChange;
         [SerializeField] private bool _isProtected;
 
         public void TakeShield()
@@ -25,6 +27,7 @@ namespace PixelCrew.Components
                 {
                     _OnDamage?.Invoke();
                     _health += value;
+                    _OnChange?.Invoke(_health);
                     if (_health <= 0)
                     {
                         _OnDie?.Invoke();
@@ -40,12 +43,22 @@ namespace PixelCrew.Components
             else
             {
                 _health += value;
+                _OnChange?.Invoke(_health);
                 if (_health > _maxHealth)
                 {
                     _health = _maxHealth;
                 }
                 Debug.Log("Your health: " + _health);
             }    
+        }
+        [Serializable]
+        public class HealthChangeEvent : UnityEvent<int>
+        {
+
+        }
+        public void SetHealth(int health)
+        {
+            _health = health;
         }
     }
 }

@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ResetLevelComponent : MonoBehaviour
+namespace PixelCrew.Components
 {
-    public void Reload()
+    public class ResetLevelComponent : MonoBehaviour
     {
-        var scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        public void Reload()
+        {
+            var session = FindObjectOfType<GameSession>();
+            Destroy(session.gameObject);
+
+            var scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
     }
 }

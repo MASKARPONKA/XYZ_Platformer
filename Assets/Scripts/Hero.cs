@@ -14,7 +14,6 @@ namespace PixelCrew
         private bool _allowDoubleJump;
         private bool _isJumping;
         private bool _isFalling;
-        private bool _isArmed;
 
         [SerializeField] private float _speed;
         [SerializeField] private float _jumpSpeed;
@@ -42,22 +41,33 @@ namespace PixelCrew
         private static readonly int Hit = Animator.StringToHash("hit");
         private static readonly int AttackKey = Animator.StringToHash("attack");
 
-        private int _score;
+        private GameSession _session;
 
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
-            _score = 0;
+        }
+        public void OnHealthChanged(int currentHealth)
+        {
+            _session.Data.HP = currentHealth;
+        }
+        private void Start()
+        {
+            _session = FindObjectOfType<GameSession>();
+
+            var health = GetComponent<HealthComponent>();
+            health.SetHealth(_session.Data.HP);
+            UpdateHeroWeapon();
         }
         public void ScoreAlter(int value)
         {
-            _score += value;
-            if (_score <= 0)
+            _session.Data.Coins += value;
+            if (_session.Data.Coins <= 0)
             {
-                _score = 0;
+                _session.Data.Coins = 0;
             }
-            Debug.Log("Your score:" + _score);
+            Debug.Log("Your score:" + _session.Data.Coins);
         }
         public void SetDirection(Vector2 directionVector)
         {
@@ -149,7 +159,7 @@ namespace PixelCrew
         }
         public void Attack()
         {
-            if (!_isArmed) return;
+            if (!_session.Data.IsArmed) return;
 
             _animator.SetTrigger(AttackKey);
         }
@@ -171,7 +181,7 @@ namespace PixelCrew
             _animator.SetTrigger(Hit);
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _damageJumpSpeed);
 
-            if (_score > 0)
+            if (_session.Data.Coins > 0)
             {
                 SpawnCoins();
             }
@@ -185,8 +195,8 @@ namespace PixelCrew
         }
         public void SpawnCoins()
         {
-            var numCoinsToDrop = Mathf.Min(_score, 5);
-            _score -= numCoinsToDrop;
+            var numCoinsToDrop = Mathf.Min(_session.Data.Coins, 5);
+            _session.Data.Coins -= numCoinsToDrop;
 
             var burst = _DamageParcticles.emission.GetBurst(0);
             burst.count = numCoinsToDrop;
@@ -194,7 +204,7 @@ namespace PixelCrew
 
             _DamageParcticles.gameObject.SetActive(true);
             _DamageParcticles.Play();
-            Debug.Log("Your score:" + _score);
+            Debug.Log("Your score:" + _session.Data.Coins);
         }
         public void Interact()
         {
@@ -237,8 +247,12 @@ namespace PixelCrew
         }
         public void ArmHero()
         {
-            _isArmed = true;
+            _session.Data.IsArmed = true;
             _animator.runtimeAnimatorController = _armed;
+        }
+        private void UpdateHeroWeapon()
+        {
+            _animator.runtimeAnimatorController = _session.Data.IsArmed ? _armed : _disarmed;
         }
     }
 }
